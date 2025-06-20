@@ -1,24 +1,35 @@
 <%- include('partials/header'); -%>
 
-<h1><a href="/">Soatmurodov Abbos</a></h1>
-<h2>Books I’ve read</h2>
-<p>It's list of books that I have read. I usually read books in my
-    language that Uzbek language. But sometimes read in English.
-    In this list, all books listed with name and ISBN of archive.org </p>
-<hr>
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <h1><a href="/">Soatmurodov Abbos</a></h1>
+        <h2>Books I’ve Read</h2>
+        <p>
+            It's a list of books that I have read. I usually read books in my language – Uzbek – but sometimes in English.
+            In this list, all books are listed with their name and ISBN from archive.org.
+        </p>
+    </div>
 
-<form action="/isbn" method="post">
-    <label for="isbn">ISBN of book</label>
-    <input type="number" id="isbn" name="isbn" required><br>
-    <label for="text">What do you think about the book: </label><br>
-    <textarea name="text" id="textarea"></textarea><br>
+    <!-- Add Book via ISBN Form -->
+    <div class="form-container">
+        <h3 style="color: #f3f4f6; margin-bottom: 1.5rem; font-size: 1.3rem;">🔍 Add Book by ISBN</h3>
+        <form action="/isbn" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="isbn">ISBN of Book</label>
+                    <input type="number" id="isbn" name="isbn" required placeholder="Enter ISBN..." />
+                </div>
 
-    <button type="submit">Post</button>
-</form>
+                <div class="form-group form-group-full">
+                    <label for="text">What do you think about the book?</label>
+                    <textarea name="text" id="textarea" placeholder="Share your opinion or review..."></textarea>
+                </div>
+            </div>
 
-
-
-<hr>
-
+            <button type="submit" class="btn">Post</button>
+        </form>
+    </div>
+</div>
 
 <%- include('partials/footer'); -%>
