@@ -1,0 +1,118 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+  <!-- Header Section -->
+  <div class="header">
+    <h1><a href="/">Soatmurodov Abbos</a></h1>
+    <h2>My Reading Journey</h2>
+    <p>
+      Welcome to my personal library! Here you'll find a collection of books I've read,
+      mostly in Uzbek but sometimes in English. Each entry includes my thoughts and ratings
+      to help track my reading journey.
+    </p>
+  </div>
+
+  <!-- Add New Book Form -->
+  <div class="form-container">
+    <h3 style="color: #f3f4f6; margin-bottom: 1.5rem; font-size: 1.3rem;">📚 Add a New Book</h3>
+    <form action="/new" method="post">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="bName">Book Title</label>
+          <input type="text" id="bName" name="bName" required placeholder="Enter book title..." />
+        </div>
+
+        <div class="form-group">
+          <label for="isbn">ISBN Number</label>
+          <input type="text" id="isbn" name="isbn" required placeholder="Enter ISBN..." />
+        </div>
+
+        <div class="form-group">
+          <label for="myRate">My Rating (1-10)</label>
+          <input type="number" id="myRate" name="myRate" min="1" max="10" required placeholder="Rate 1-10" />
+        </div>
+
+        <div class="form-group form-group-full">
+          <label for="text">My Thoughts & Review</label>
+          <textarea name="text" id="textarea" placeholder="What did you think about this book? Share your insights..."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Add Book to Library</button>
+    </form>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <% if (messageSQL) { %>
+    <div class="message <%= messageSQL.includes('successfully') || messageSQL.includes('added') ? 'success' : 'error' %>">
+      <%= messageSQL %>
+    </div>
+  <% } %>
+
+  <!-- Sorting Controls -->
+  <div class="sort-controls">
+    <p>📊 Sort by:</p>
+    <form action="/" method="get">
+      <input type="hidden" name="sort" value="best"/>
+      <button type="submit" class="btn btn-secondary">⭐ Highest Rated</button>
+    </form>
+    <form action="/" method="get">
+      <input type="hidden" name="sort" value="newest"/>
+      <button type="submit" class="btn btn-secondary">🆕 Most Recent</button>
+    </form>
+    <form action="/" method="get">
+      <input type="hidden" name="sort" value="title"/>
+      <button type="submit" class="btn btn-secondary">🔤 Alphabetical</button>
+    </form>
+    <a href="/add" class="btn btn-secondary">✏️ Update Book Notes</a>
+  </div>
+
+  <!-- Books Display -->
+  <% if (results && results.length > 0) { %>
+    <div class="books-grid">
+      <% results.forEach(book => { %>
+        <div class="book-card" id="book-<%= book.id %>">
+          <% if (book.images) { %>
+            <img
+                    src="data:image/jpg;base64,<%= book.images %>"
+                    alt="Cover of <%= book.name %>"
+                    class="book-cover"
+            />
+          <% } else { %>
+            <div class="book-cover" style="background: linear-gradient(135deg, #374151, #1f2937); display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.8rem; text-align: center;">
+              No Cover Available
+            </div>
+          <% } %>
+
+          <div class="book-info">
+            <h3 class="book-title"><%= book.name %></h3>
+
+            <div class="book-meta">
+              <span class="book-rating">⭐ <%= book.my_rate %>/10</span>
+              <span class="book-date">📅 <%= new Date(book.time).toLocaleDateString() %></span>
+              <span class="book-isbn">📖 ISBN: <%= book.isbn %></span>
+            </div>
+
+            <% if (book.text && book.text.trim()) { %>
+              <div class="book-text">
+                <strong>My Review:</strong><br>
+                <%= book.text %>
+              </div>
+            <% } else { %>
+              <div class="book-text" style="font-style: italic; color: #6b7280;">
+                No review written yet. <a href="/add" style="color: #8b5cf6;">Add your thoughts →</a>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div style="text-align: center; padding: 4rem 2rem; color: #6b7280;">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">📚 Your library is empty</h3>
+      <p>Start building your reading collection by adding your first book above!</p>
+    </div>
+  <% } %>
+</div>
+
+<%- include('partials/footer'); -%>

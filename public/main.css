@@ -1,0 +1,342 @@
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+    color: #e5e7eb;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header styles */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #374151;
+}
+
+.header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.header h1 a {
+    text-decoration: none;
+    color: inherit;
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.header h2 {
+    font-size: 1.5rem;
+    color: #9ca3af;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.header p {
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Form styles */
+.form-container {
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #374151;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #d1d5db;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(17, 24, 39, 0.8);
+    border: 1px solid #4b5563;
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: #f3f4f6;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    background: rgba(17, 24, 39, 1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+/* Button styles */
+.btn {
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(75, 85, 99, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #6b7280;
+}
+
+.btn-secondary:hover {
+    background: rgba(107, 114, 128, 0.9);
+    box-shadow: 0 5px 15px rgba(75, 85, 99, 0.4);
+}
+
+/* Message styles */
+.message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.message.success {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+    color: #6ee7b7;
+}
+
+.message.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #fca5a5;
+}
+
+/* Sorting controls */
+.sort-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.sort-controls p {
+    color: #9ca3af;
+    font-weight: 500;
+    margin: 0;
+}
+
+.sort-controls form {
+    margin: 0;
+}
+
+/* Book grid */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.book-card {
+    background: rgba(31, 41, 55, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid #374151;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    border-color: #8b5cf6;
+}
+
+.book-cover {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    float: left;
+    margin-right: 1rem;
+}
+
+.book-info {
+    overflow: hidden;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f3f4f6;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.book-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.book-meta span {
+    background: rgba(139, 92, 246, 0.1);
+    color: #c4b5fd;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.book-rating {
+    background: rgba(251, 191, 36, 0.1) !important;
+    color: #fcd34d !important;
+}
+
+.book-date {
+    background: rgba(16, 185, 129, 0.1) !important;
+    color: #6ee7b7 !important;
+}
+
+.book-isbn {
+    background: rgba(6, 182, 212, 0.1) !important;
+    color: #67e8f9 !important;
+}
+
+.book-text {
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-top: 1rem;
+    clear: both;
+    padding-top: 1rem;
+    border-top: 1px solid #374151;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sort-controls {
+        justify-content: center;
+    }
+
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-cover {
+        float: none;
+        display: block;
+        margin: 0 auto 1rem auto;
+    }
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.book-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8b5cf6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7c3aed;
+}
