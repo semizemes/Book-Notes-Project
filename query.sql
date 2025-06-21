@@ -1,5 +1,5 @@
 -- create table --
-create table books (id serial, name VARCHAR(80),  ISBN integer, time VARCHAR(30), my_rate integer, images bytea, primary key(id, ISBN));
+create table books (id serial, text TEXT, name VARCHAR(80),  ISBN integer, time VARCHAR(30), my_rate integer, images bytea, primary key(id, ISBN));
 
 -- see all data --
 select * from books
